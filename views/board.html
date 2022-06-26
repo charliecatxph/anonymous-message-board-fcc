@@ -32,7 +32,7 @@
             crossorigin="anonymous"></script>
     <script>
       $(function() {
-        var currentBoard = window.location.pathname.slice(3,-1);
+        var currentBoard = window.location.pathname.slice(3, -1);
         var url = "/api/threads/"+currentBoard;
         $('#boardTitle').text('Welcome to '+window.location.pathname)
         $.ajax({
@@ -46,7 +46,6 @@
             // THIS IS NOT WHAT IT WOULD LOOK LIKE TO GO LIVE
             //
             data.forEach(function(ele) {
-              console.log(ele);//can I use typeScript please?!
               var thread = ['<div class="thread">'];
               thread.push('<div class="main">')
               thread.push('<p class="id">id: '+ele._id+' ('+ele.created_on+')</p>');
@@ -66,7 +65,7 @@
                 thread.push('</div>')
               });
               thread.push('<div class="newReply">')
-              thread.push('<form action="/api/replies/'+currentBoard+'/" method="post" id="newReply">');
+              thread.push('<form action="/api/replies/'+currentBoard+'" method="post" id="newReply">');
               thread.push('<input type="hidden" name="thread_id" value="'+ele._id+'">');
               thread.push('<textarea rows="5" cols="80" type="text" placeholder="Quick reply..." name="text" required=""></textarea><br>');
               thread.push('<input type="text" placeholder="password to delete" name="delete_password" required=""><input style="margin-left: 5px" type="submit" value="Submit">')
